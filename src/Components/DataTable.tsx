@@ -1,28 +1,91 @@
+import { FC } from 'react';
 import { Table } from 'antd';
-import { FC, useEffect, useState } from 'react';
-import { IFormValues } from '../types';
-import { getOpenStreetMapsData } from '../api';
-import { osmToJson } from '../helpers/osmTools';
-import Loading from './Loading';
+import { IOSMElements } from '../types';
+
+// const dataSource = [
+//     {
+//         key: '1',
+//         name: 'Mike',
+//         age: 32,
+//         address: '10 Downing Street',
+//     },
+//     {
+//         key: '2',
+//         name: 'John',
+//         age: 42,
+//         address: '10 Downing Street',
+//     },
+// ];
+
+const columns = [
+  //     type: string;
+  // id: number;
+  // lat: number;
+  // lon: number;
+  // timestamp: string;
+  // version: string;
+  // changeset: number;
+  // user: string;
+  // uid: string;
+  // nodes?: number[]
+  // tags?: {[key: string]: string}
+
+  {
+    title: 'Id',
+    dataIndex: 'id',
+    key: 'id',
+  },
+  {
+    title: 'Type',
+    dataIndex: 'type',
+    key: 'type',
+  },
+  {
+    title: 'User',
+    dataIndex: 'user',
+    key: 'user',
+  },
+  {
+    title: 'timeStamp',
+    dataIndex: 'timestamp',
+    key: 'timestamp',
+  },
+  {
+    title: 'Version',
+    dataIndex: 'version',
+    key: 'version',
+  },
+  {
+    title: 'Longitude',
+    dataIndex: 'lon',
+    key: 'lon',
+  },
+  {
+    title: 'Latitude',
+    dataIndex: 'lat',
+    key: 'lat',
+  },
+  {
+    title: 'Tags',
+    dataIndex: 'tags',
+    key: 'tags',
+    render: (text: { [s: string]: unknown } | ArrayLike<unknown>) => {
+      return <div>{text && Object.entries(text).map(([key, value]) => `${key}:${value}, `)}</div>;
+    },
+  },
+
+  // {
+  //     title: 'Nodes',
+  //     dataIndex: 'nodes',
+  //     key: 'nodes',
+  // },
+];
 
 interface IProps {
-  formData: IFormValues;
+  dataSource: IOSMElements[];
 }
 
-const DataTable: FC<IProps> = ({ formData }) => {
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    console.log('useEffect', formData);
-    setLoading(true);
-    getOpenStreetMapsData(formData)
-      .then((res) => {
-        osmToJson(res);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [formData]);
-  return loading ? <Loading /> : <Table />;
+const DataTable: FC<IProps> = ({ dataSource }) => {
+  return <Table dataSource={dataSource} columns={columns} />;
 };
-
 export default DataTable;

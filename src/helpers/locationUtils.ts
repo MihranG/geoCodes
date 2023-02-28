@@ -3,7 +3,7 @@ export enum GeoEnums {
   LatitudeMin = -90.0,
   LongitudeMax = 180.0,
   LongitudeMin = -180.0,
-  step = 0.0001,
+  step = 1,
 }
 
 export enum OpenStreetMapEnum {

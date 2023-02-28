@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import React, { useState } from 'react';
 import FormComponent from './Components/FormComponent';
 import { IFormValues } from './types';
-import DataTable from './Components/DataTable';
+import DataSet from './Components/DataSet';
 const { Content, Footer, Header } = Layout;
 const headerStyle: React.CSSProperties = {
   textAlign: 'center',
@@ -35,7 +35,7 @@ function App() {
       <Header style={headerStyle}>GeoJSON Features </Header>
       <Content style={contentStyle}>
         <FormComponent onFormSubmit={onFormSubmit} />
-        {formData && <DataTable formData={formData} />}
+        {formData && <DataSet formData={formData} />}
       </Content>
       <Footer style={footerStyle}>GeoJSON (c)</Footer>
     </Layout>

@@ -28,6 +28,8 @@ export interface IOSMElements {
   changeset: number;
   user: string;
   uid: string;
+  nodes?: number[];
+  tags?: { [key: string]: string };
 }
 
 export interface IOSMData {
