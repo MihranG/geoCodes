@@ -19,3 +19,12 @@ You can provide a Longitude and Latitude and geolocation box rectangle side
 with slider, your provided value will be divided by 10000 and added to the
 longitude and latitude to create a bounding box for input.
 
+## For running tests
+
+You should run command
+### `npm run test` or `yarn test`
+
+for graphical representation in browser you can run 
+### `npm run test:ui` or `yarn test:ui`
+
+
