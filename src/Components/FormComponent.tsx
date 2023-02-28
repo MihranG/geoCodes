@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Button, Form, InputNumber, Slider, Typography } from 'antd';
 import { GeoEnums } from '../helpers/locationUtils';
 import { IFormValues } from '../types';
+import { GeoInputsEnum, validationRules } from '../helpers/validations';
 
 const layout = {
   labelCol: { span: 8 },
@@ -26,7 +27,7 @@ const FormComponent: FC<IProps> = ({ onFormSubmit }) => {
       <Form.Item>
         <Typography>Example: Longitude: 44.234, Latitude: 43.023, Box Side: 20</Typography>
       </Form.Item>
-      <Form.Item name="Longitude" label="Longitude" rules={[{ required: true, message: 'Please provide a Longitude' }]}>
+      <Form.Item name="Longitude" label="Longitude" rules={validationRules(GeoInputsEnum.LONGITUDE)}>
         <InputNumber
           style={{ width: '100%' }}
           max={GeoEnums.LongitudeMax}
@@ -34,7 +35,7 @@ const FormComponent: FC<IProps> = ({ onFormSubmit }) => {
           step={GeoEnums.step}
         />
       </Form.Item>
-      <Form.Item name="Latitude" label="Latitude" rules={[{ required: true, message: 'Please provide a Latitude' }]}>
+      <Form.Item name="Latitude" label="Latitude" rules={validationRules(GeoInputsEnum.LATITUDE)}>
         <InputNumber
           style={{ width: '100%' }}
           max={GeoEnums.LatitudeMax}

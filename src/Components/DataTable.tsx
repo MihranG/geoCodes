@@ -1,35 +1,9 @@
 import { FC } from 'react';
 import { Table } from 'antd';
 import { IOSMElements } from '../types';
-
-// const dataSource = [
-//     {
-//         key: '1',
-//         name: 'Mike',
-//         age: 32,
-//         address: '10 Downing Street',
-//     },
-//     {
-//         key: '2',
-//         name: 'John',
-//         age: 42,
-//         address: '10 Downing Street',
-//     },
-// ];
+import ErrorMessage from './ErrorMessage';
 
 const columns = [
-  //     type: string;
-  // id: number;
-  // lat: number;
-  // lon: number;
-  // timestamp: string;
-  // version: string;
-  // changeset: number;
-  // user: string;
-  // uid: string;
-  // nodes?: number[]
-  // tags?: {[key: string]: string}
-
   {
     title: 'Id',
     dataIndex: 'id',
@@ -73,19 +47,15 @@ const columns = [
       return <div>{text && Object.entries(text).map(([key, value]) => `${key}:${value}, `)}</div>;
     },
   },
-
-  // {
-  //     title: 'Nodes',
-  //     dataIndex: 'nodes',
-  //     key: 'nodes',
-  // },
+  // here can be added elements for matching fields in the dataSource
 ];
 
 interface IProps {
   dataSource: IOSMElements[];
+  error: boolean;
 }
 
-const DataTable: FC<IProps> = ({ dataSource }) => {
-  return <Table dataSource={dataSource} columns={columns} />;
+const DataTable: FC<IProps> = ({ dataSource, error }) => {
+  return error ? <ErrorMessage /> : <Table dataSource={dataSource} columns={columns} />;
 };
 export default DataTable;

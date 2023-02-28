@@ -27,11 +27,11 @@ const footerStyle: React.CSSProperties = {
 
 function App() {
   const [formData, setFormData] = useState<null | IFormValues>(null);
-  const onFormSubmit = (values: IFormValues) => {
+  const onFormSubmit = (values: IFormValues | null) => {
     setFormData(values);
   };
   return (
-    <Layout style={{ width: '100%', height: '100%' }}>
+    <Layout>
       <Header style={headerStyle}>GeoJSON Features </Header>
       <Content style={contentStyle}>
         <FormComponent onFormSubmit={onFormSubmit} />
