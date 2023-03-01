@@ -27,7 +27,7 @@ const FormComponent: FC<IProps> = ({ onFormSubmit }) => {
       <Form.Item>
         <Typography>Example: Longitude: 44.234, Latitude: 43.023, Box Side: 20</Typography>
       </Form.Item>
-      <Form.Item name="Longitude" label="Longitude" rules={validationRules(GeoInputsEnum.LONGITUDE)}>
+      <Form.Item name="Longitude" label="Longitude (btw -180 and 180 )" rules={validationRules(GeoInputsEnum.LONGITUDE)}>
         <InputNumber
           style={{ width: '100%' }}
           max={GeoEnums.LongitudeMax}
@@ -35,7 +35,7 @@ const FormComponent: FC<IProps> = ({ onFormSubmit }) => {
           step={GeoEnums.step}
         />
       </Form.Item>
-      <Form.Item name="Latitude" label="Latitude" rules={validationRules(GeoInputsEnum.LATITUDE)}>
+      <Form.Item name="Latitude" label="Latitude (btw -90 and 90 )" rules={validationRules(GeoInputsEnum.LATITUDE)}>
         <InputNumber
           style={{ width: '100%' }}
           max={GeoEnums.LatitudeMax}
